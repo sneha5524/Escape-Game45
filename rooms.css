@@ -1,0 +1,134 @@
+.room {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  
+}
+
+.room-header h2 {
+  color: rgba(0, 128, 0, 0.578);
+}
+
+.room-object {
+  background: linear-gradient(145deg, #f7fafc, #edf2f7);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.room-object:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(76, 81, 191, 0.2);
+  border-color: wheat;
+  background: linear-gradient(145deg, #667eea, #764ba2);
+  color: white;
+}
+
+.room-object.found::after {
+  content: '✓';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.object-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.room-object:hover .object-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.bedroom .bed {
+  background: linear-gradient(145deg, #fbb6ce, #f687b3);
+}
+
+.bedroom .nightstand {
+  background: linear-gradient(145deg, #fed7d7, #feb2b2);
+}
+
+.bedroom .wardrobe {
+  background: linear-gradient(145deg, #e9d8fd, #d6bcfa);
+}
+
+.bedroom .mirror {
+  background: linear-gradient(145deg, #bee3f8, #90cdf4);
+}
+
+.bedroom .plant {
+  background: linear-gradient(145deg, #c6f6d5, #9ae6b4);
+}
+
+.study .desk {
+  background: linear-gradient(145deg, #fed7aa, #fbd38d);
+}
+
+.study .bookshelf {
+  background: linear-gradient(145deg, #d69e2e, #b7791f);
+}
+
+.study .chair {
+  background: linear-gradient(145deg, #fc8181, #f56565);
+}
+
+.study .lamp {
+  background: linear-gradient(145deg, #faf089, #f6e05e);
+}
+
+.study .globe {
+  background: linear-gradient(145deg, #81e6d9, #4fd1c7);
+}
+
+@media (max-width: 768px) {
+  .room {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .room-object {
+    padding: 1.5rem;
+  }
+
+  .object-icon {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .room {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .room-object {
+    padding: 1rem;
+  }
+
+  .object-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+} 

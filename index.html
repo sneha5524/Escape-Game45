@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mystery Escape Room</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="rooms.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <div class="header-content">
+                <h1 class="game-title">🧩 The Mystery Escape Room</h1>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Score:</span>
+                        <span id="score" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Room:</span>
+                        <span id="current-room" class="stat-value">1</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Questions:</span>
+                        <span id="questions-answered" class="stat-value">0</span>/10
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <main class="game-main">
+            <div id="welcome-screen" class="screen active">
+                <div class="welcome-content">
+                    <h2>Welcome to the Mystery Escape Room!</h2>
+                    <div class="welcome-description">
+                        <p>🎯 <strong>Objective:</strong> Solve all 10 questions hidden in 2 different rooms</p>
+                        <p>⏱️ <strong>Time Limit:</strong> 10 seconds per question (one retry allowed)</p>
+                        <p>🚪 <strong>Rooms:</strong> Explore the Bedroom and Study Room</p>
+                        <p>🔍 <strong>Clues:</strong> Click on furniture to find hidden questions</p>
+                    </div>
+                   <button id="start-game" class="primary-btn" onclick="startGame()">Start Your Adventure</button>
+                </div>
+            </div>
+
+
+
+            <div id="room-1" class="screen room-screen">
+                <div class="room-header">
+                    <h2>🛏️ Bedroom - Find 5 Hidden Clues</h2>
+                    <div class="room-progress">
+                        <div class="progress-bar">
+                            <div id="room-1-progress" class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="room bedroom">
+                    <div class="room-object bed" data-clue="bed">
+                        <div class="object-icon">🛏️</div>
+                        <div class="object-label">Bed</div>
+                    </div>
+                    <div class="room-object nightstand" data-clue="nightstand">
+                        <div class="object-icon">🕯️</div>
+                        <div class="object-label">Nightstand</div>
+                    </div>
+                    <div class="room-object wardrobe" data-clue="wardrobe">
+                        <div class="object-icon">👔</div>
+                        <div class="object-label">Wardrobe</div>
+                    </div>
+                    <div class="room-object mirror" data-clue="mirror">
+                        <div class="object-icon">🪞</div>
+                        <div class="object-label">Mirror</div>
+                    </div>
+                    <div class="room-object plant" data-clue="plant">
+                        <div class="object-icon">🌱</div>
+                        <div class="object-label">Plant</div>
+                    </div>
+                </div>
+                <div class="room-navigation">
+                    <button id="to-room-2" class="secondary-btn" disabled>Go to Study Room →</button>
+                </div>
+            </div>
+
+            <div id="room-2" class="screen room-screen">
+                <div class="room-header">
+                    <h2>📚 Study Room - Find 5 Hidden Clues</h2>
+                    <div class="room-progress">
+                        <div class="progress-bar">
+                            <div id="room-2-progress" class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="room study">
+                    <div class="room-object desk" data-clue="desk">
+                        <div class="object-icon">🖥️</div>
+                        <div class="object-label">Desk</div>
+                    </div>
+                    <div class="room-object bookshelf" data-clue="bookshelf">
+                        <div class="object-icon">📚</div>
+                        <div class="object-label">Bookshelf</div>
+                    </div>
+                    <div class="room-object chair" data-clue="chair">
+                        <div class="object-icon">🪑</div>
+                        <div class="object-label">Chair</div>
+                    </div>
+                    <div class="room-object lamp" data-clue="lamp">
+                        <div class="object-icon">💡</div>
+                        <div class="object-label">Lamp</div>
+                    </div>
+                    <div class="room-object globe" data-clue="globe">
+                        <div class="object-icon">🌍</div>
+                        <div class="object-label">Globe</div>
+                    </div>
+                </div>
+                <div class="room-navigation">
+                    <button id="back-to-room-1" class="secondary-btn">← Back to Bedroom</button>
+                </div>
+            </div>
+
+            <div id="game-over-screen" class="screen">
+                <div class="game-over-content">
+                    <div id="game-result"></div>
+                    <button id="restart-game" class="primary-btn">Play Again</button>
+                </div>
+            </div>
+        </main>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
