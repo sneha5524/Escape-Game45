@@ -1,134 +1,187 @@
 .room {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
-
-.room-header h2 {
-  color: rgba(0, 128, 0, 0.578);
+.room-header h2{
+    color: rgba(0, 128, 0, 0.578);
 }
-
 .room-object {
-  background: linear-gradient(145deg, #f7fafc, #edf2f7);
-  border-radius: 15px;
-  padding: 2rem;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  position: relative;
-  overflow: hidden;
+    background: linear-gradient(145deg, #f7fafc, #edf2f7);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    color:white;
+    overflow: hidden;
+}
+.color{
+    color: rgba(0, 128, 0, 0.578);
+}
+.room-object::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.room-object:hover::before {
+    left: 100%;
 }
 
 .room-object:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(76, 81, 191, 0.2);
-  border-color: wheat;
-  background: linear-gradient(145deg, #667eea, #764ba2);
-  color: white;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(76, 81, 191, 0.2);
+    border-color: wheat;
+    background: linear-gradient(145deg, #667eea, #764ba2);
+   
+}
+
+.room-object.found {
+    background: linear-gradient(145deg, #48bb78, #38a169);
+    color: white;
+    border-color: #38a169;
+    cursor: default;
+}
+
+.room-object.found:hover {
+    transform: none;
+    background: linear-gradient(145deg, #48bb78, #38a169);
 }
 
 .room-object.found::after {
-  content: '✓';
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(255, 255, 255, 0.2);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.2rem;
+    content: '✓';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .object-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    transition: transform 0.3s ease;
 }
 
 .room-object:hover .object-icon {
-  transform: scale(1.1) rotate(5deg);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.object-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.bedroom {
+    background: linear-gradient(145deg, #fef5e7, #fed7aa);
+}
+
+.study {
+    background: linear-gradient(145deg, #e6fffa, #b2f5ea);
 }
 
 .bedroom .bed {
-  background: linear-gradient(145deg, #fbb6ce, #f687b3);
+    background: linear-gradient(145deg, #fbb6ce, #f687b3);
 }
 
 .bedroom .nightstand {
-  background: linear-gradient(145deg, #fed7d7, #feb2b2);
+    background: linear-gradient(145deg, #fed7d7, #feb2b2);
 }
 
 .bedroom .wardrobe {
-  background: linear-gradient(145deg, #e9d8fd, #d6bcfa);
+    background: linear-gradient(145deg, #e9d8fd, #d6bcfa);
 }
 
 .bedroom .mirror {
-  background: linear-gradient(145deg, #bee3f8, #90cdf4);
+    background: linear-gradient(145deg, #bee3f8, #90cdf4);
 }
 
 .bedroom .plant {
-  background: linear-gradient(145deg, #c6f6d5, #9ae6b4);
+    background: linear-gradient(145deg, #c6f6d5, #9ae6b4);
 }
 
 .study .desk {
-  background: linear-gradient(145deg, #fed7aa, #fbd38d);
+    background: linear-gradient(145deg, #fed7aa, #fbd38d);
 }
 
 .study .bookshelf {
-  background: linear-gradient(145deg, #d69e2e, #b7791f);
+    background: linear-gradient(145deg, #d69e2e, #b7791f);
 }
 
 .study .chair {
-  background: linear-gradient(145deg, #fc8181, #f56565);
+    background: linear-gradient(145deg, #fc8181, #f56565);
 }
 
 .study .lamp {
-  background: linear-gradient(145deg, #faf089, #f6e05e);
+    background: linear-gradient(145deg, #faf089, #f6e05e);
 }
 
 .study .globe {
-  background: linear-gradient(145deg, #81e6d9, #4fd1c7);
+    background: linear-gradient(145deg, #81e6d9, #4fd1c7);
 }
 
 @media (max-width: 768px) {
-  .room {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding: 1rem;
-  }
-
-  .room-object {
-    padding: 1.5rem;
-  }
-
-  .object-icon {
-    font-size: 2.5rem;
-  }
+    .room {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .room-object {
+        padding: 1.5rem;
+    }
+    
+    .object-icon {
+        font-size: 2.5rem;
+    }
+    
+    .object-label {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
-  .room {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .room-object {
-    padding: 1rem;
-  }
-
-  .object-icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-} 
+    .room {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .room-object {
+        padding: 1rem;
+    }
+    
+    .object-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .object-label {
+        font-size: 0.9rem;
+    }
+}

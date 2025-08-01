@@ -6,9 +6,9 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background:#ffc0cb;
+    background: pink;
     min-height: 100vh;
-    color: #2d3748;
+    color: rgba(0, 128, 0, 0.578);
 }
 
 .game-container {
@@ -16,9 +16,12 @@ body {
     display: flex;
     flex-direction: column;
 }
+.stat-value {
+color:black;
+}
 
 .game-header {
-    background:#ffffff;
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 1rem 0;
@@ -37,11 +40,14 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
 }
-
+.color{
+    color: rgba(0, 128, 0, 0.578);
+    text-shadow: 0 2px 4px rgba(76, 81, 191, 0.1);
+}
 .game-title {
     font-size: 1.75rem;
     font-weight: 700;
-    color: rgba(0, 128, 0, 0.637);
+    color: rgba(0, 128, 0, 0.578);
     text-shadow: 0 2px 4px rgba(76, 81, 191, 0.1);
 }
 
@@ -58,23 +64,24 @@ body {
 
 .stat-label {
     font-weight: 500;
-    color: #718096;
-    font-size: 0.9rem;
+    color: rgba(255, 192, 203, 0.995);
+    font-size: 18px;
 }
 
 .stat-value {
     font-weight: 600;
-    color: rgb(255, 192, 203);
+    color: rgba(0, 128, 0, 0.578);
     font-size: 1.1rem;
-    background: rgba(76, 81, 191, 0.1);
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
 }
+
 
 .game-main {
     flex: 1;
     position: relative;
 }
+
 
 .screen {
     display: none;
@@ -86,6 +93,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 
 .welcome-content {
     max-width: 600px;
@@ -101,9 +109,10 @@ body {
 .welcome-content h2 {
     font-size: 2.5rem;
     font-weight: 700;
+    color: rgba(0, 128, 0, 0.578);
     margin-bottom: 2rem;
-   
-}
+    text-shadow: 0 2px 4px rgba(76, 81, 191, 0.1);
+} 
 
 .welcome-description {
     text-align: left;
@@ -118,13 +127,13 @@ body {
 }
 
 .welcome-description strong {
-    color:rgba(0, 128, 0, 0.637);
+    color: rgba(0, 128, 0, 0.578);
     font-weight: 600;
 }
 
 .primary-btn {
-    background: rgba(0, 128, 0, 0.637);
-    color: rgba(255, 255, 255, 0.95);
+    background: rgba(0, 128, 0, 0.578);
+    color: white;
     border: none;
     padding: 1rem 2rem;
     border-radius: 50px;
@@ -138,13 +147,16 @@ body {
 
 .primary-btn:hover {
     transform: translateY(-2px);
-    box-shadow: white;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
 }
 
 .secondary-btn {
-    background: rgba(0, 128, 0, 0.637);
-    color: black;
-    border: 2px solid white;
+    background-color: rgba(0, 128, 0, 0.578);
+    color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 25px;
     font-size: 1rem;
@@ -152,13 +164,12 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: inherit;
+    border: none;
 }
 
 .secondary-btn:hover:not(:disabled) {
-    background:white;
-    color:black;
+    color: white;
     transform: translateY(-1px);
-    box-shadow: 2px solid white;
 }
 
 .secondary-btn:disabled {
@@ -174,30 +185,33 @@ body {
     margin-bottom: 2rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
+    
 }
 
 .room-header h2 {
     font-size: 1.8rem;
     font-weight: 600;
-    color: #4c51bf;
+    color: rgba(0, 128, 0, 0.578);
     margin-bottom: 1rem;
     text-align: center;
 }
 
-/* .room-progress {
+.room-progress {
     display: flex;
     align-items: center;
     gap: 1rem;
     justify-content: center;
-} */
+    font-weight: 30px;
+    color: rgba(255, 192, 203, 0.995);
+}
 
-/* .progress-bar {
+.progress-bar {
     width: 200px;
     height: 8px;
     background: rgba(76, 81, 191, 0.2);
     border-radius: 4px;
     overflow: hidden;
-} */
+}
 
 .progress-fill {
     height: 100%;
@@ -206,16 +220,18 @@ body {
     transition: width 0.5s ease;
     border-radius: 4px;
 }
+.progress-text {
+  font-weight: 700;
+  color: pink;
+  font-size: 1.2rem; 
+}
 
-/* .progress-text {
-    font-weight: 500;
-    color: #4a5568;
-} */
 .room-navigation {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
 }
+
 
 .game-over-content {
     max-width: 500px;
@@ -243,11 +259,7 @@ body {
     color: #38a169;
 }
 
-.failure {
-    color: #e53e3e;
-}
 
-/* Loading Overlay */
 .loading-overlay {
     position: fixed;
     top: 0;
@@ -283,10 +295,10 @@ body {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-} 
+}
 
-/* Responsive Design */
- @media (max-width: 768px) {
+
+@media (max-width: 768px) {
     .header-content {
         flex-direction: column;
         text-align: center;
@@ -319,4 +331,4 @@ body {
     .room-header h2 {
         font-size: 1.5rem;
     }
-}   
+}
