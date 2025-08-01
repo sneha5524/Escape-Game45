@@ -1,4 +1,3 @@
-// 1. Question data
 const clues = {
   // Room 1
   bed: { question: "What do you sleep on?", answer: "bed" },
@@ -14,7 +13,6 @@ const clues = {
   globe: { question: "Which object shows the world map?", answer: "globe" }
 };
 
-// 2. State variables
 let score = 0;
 let currentRoom = 1;
 let answeredCount = 0;
@@ -22,12 +20,12 @@ let retry = false;
 let timer = null;
 let seconds = 0;
 
-// 3. Helper function
+
 function $(id) {
   return document.getElementById(id);
 }
 
-// 4. Start the game
+
 function startGame() {
   hideAllScreens();
   $("room-1").classList.add("active");
@@ -41,19 +39,18 @@ function startGame() {
   setupClueClicks();
 }
 
-// 5. Hide all screens
 function hideAllScreens() {
   document.querySelectorAll(".screen").forEach(screen => screen.classList.remove("active"));
 }
 
-// 6. Update score and room stats
+
 function updateStats() {
   $("score").textContent = score;
   $("current-room").textContent = currentRoom;
   $("questions-answered").textContent = answeredCount;
 }
 
-// 7. Reset room progress
+
 function resetRoomProgress(roomNum) {
   $(`room-${roomNum}-count`).textContent = `0/5 clues found`;
   $(`room-${roomNum}-progress`).style.width = "0%";
@@ -64,14 +61,14 @@ function resetRoomProgress(roomNum) {
   if (roomNum === 1) $("to-room-2").disabled = true;
 }
 
-// 8. Make room objects clickable
+
 function setupClueClicks() {
   document.querySelectorAll(`#room-${currentRoom} .room-object:not(.found)`).forEach(obj => {
     obj.onclick = () => showModal(obj.getAttribute("data-clue"));
   });
 }
 
-// 9. Show question modal
+
 function showModal(clueKey) {
   const clue = clues[clueKey];
   $("modal-title").textContent = "Question Found!";
@@ -101,7 +98,6 @@ function showModal(clueKey) {
   startTimer();
 }
 
-// 10. Timer functions
 function startTimer() {
   stopTimer();
   seconds = 10;
@@ -117,7 +113,7 @@ function startTimer() {
         startTimer();
       } else {
         closeModal();
-        alert("Samay samapt! Agle clue par try karo.");
+        alert("Time is up! Try the next clue.");
       }
     }
   }, 1000);
@@ -127,7 +123,7 @@ function stopTimer() {
   if (timer) clearInterval(timer);
 }
 
-// 11. Check user answer
+
 function checkAnswer(userAns, correctAns, clueKey) {
   stopTimer();
   if (userAns === correctAns) {
@@ -139,16 +135,16 @@ function checkAnswer(userAns, correctAns, clueKey) {
     checkRoomProgress();
   } else if (!retry) {
     retry = true;
-    alert("Yeh answer galat hai, fir se try karein!");
+    alert("This answer is wrong, try again!");
     $("retry-indicator").classList.remove("hidden");
     startTimer();
   } else {
     closeModal();
-    alert("Answer fir se galat hai, agli clue dhoondhein!");
+    alert("The answer is wrong again, find the next clue!");
   }
 }
 
-// 12. Mark clue as found
+
 function markClueFound(clueKey) {
   const el = document.querySelector(`#room-${currentRoom} .room-object[data-clue="${clueKey}"]`);
   if (el) {
@@ -160,7 +156,7 @@ function markClueFound(clueKey) {
   $(`room-${currentRoom}-progress`).style.width = `${foundCount * 20}%`;
 }
 
-// 13. Check if all clues in room are found
+
 function checkRoomProgress() {
   const found = document.querySelectorAll(`#room-${currentRoom} .room-object.found`).length;
   if (found === 5) {
@@ -172,13 +168,13 @@ function checkRoomProgress() {
   }
 }
 
-// 14. Close the modal
+
 function closeModal() {
   retry = false;
   $("question-modal").classList.remove("active");
 }
 
-// 15. End the game
+
 function endGame(won) {
   stopTimer();
   hideAllScreens();
@@ -188,7 +184,7 @@ function endGame(won) {
     : `<h2>💀 Game Over!</h2><p>Try Again!</p>`;
 }
 
-// 16. Navigation and loading
+
 window.onload = function () {
   hideAllScreens();
   $("welcome-screen").classList.add("active");
